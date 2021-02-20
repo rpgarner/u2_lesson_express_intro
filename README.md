@@ -1,46 +1,45 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  WEB DEVELOPMENT IMMERSIVE
+# Intro to Express
 
-![Express](./express.png)
+![Hogwarts](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F38.media.tumblr.com%2Ff87f45a928d19394f4e1c20e1ce3fe69%2Ftumblr_nb7g7nSAEv1qgxmqno1_500.gif&f=1&nofb=1)
 
-## Learning Objectives
+## Overview
+[Express](http://expressjs.com) is a library we'll use to make web servers for our front-end applications to query our databases.
 
+## Objectives
  - Review the HTTP request / response flow
  - Explain the role of a web server in a full-stack application
  - Write a route handler for a GET request with Express
  - Pass information with query and route parameters
  - Respond to a GET request with data from a database
 
-## Overview
-
-[Express](http://expressjs.com) is a library we'll use to make web servers for our front-end applications to query our databases.
-
 ## HTTP
-
 You may have seen `http` or `https` while browsing the web before. What you may not know is that HTTP is the structure of messages that all information travels in over the web. 
 
-When you visit a webpage in your browser, you type in a URL for a website, like `http://gothamist.com/`. What's technically happening here, is you're making an **HTTP request**. The browser sends a message to Gothamist's web server that speaks HTTP: "Hey, can I have the contents for the domain `gothamist.com`, at the path `/news`?
+When you visit a webpage in your browser, you type in a URL like `https://wizardingworld.com/`. What's technically happening here, is you're making an **HTTP request**. The browser sends a message to the Harry Potter web server that speaks HTTP: "Hey, can I have the contents for the domain `wizardingworld.com`, at the path `/news`?
 
-Gothamist's web server sends an **HTTP response** back with the HTML content of that website.
+The web server sends an **HTTP response** back with the HTML content of that website. Magic!
 
 This **HTTP request** and **response** cycle is at the heart of the web. You might have already wrote HTTP requests - the JavaScript function `fetch()` makes HTTP requests, and provides HTTP responses back to you.
 
-## Where Express fits in
+![Magic](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FQX0rXtXaDkdJm%2Fgiphy.gif&f=1&nofb=1)
+
+## Where Express Fits In
 
 Express is a JavaScript library to set up your own web server, which listens for different kinds of HTTP requests, and serves the right response.
 
-We'll use Express solely as a **JSON API server**. Our database might contain information about music festivals. Our React-powered front-end application will make `fetch()` calls to our server to, say, get all the music festivals at `/api/music-festivals.json`. 
+We'll use Express solely as a **JSON API server**. Our database might contain information about quidditch matches. Our React-powered front-end application will make `fetch()` calls to our server to, say, get all the matches at `/api/quidditch-matches.json`. 
 
-In working on the web server, it is your job to write code to listen for a `/api/music-festivals.json` HTTP request, query information from the database, and then send it back to the front-end in an HTTP reseponse.
+In working on the web server, it is your job to write code to listen for a `/api/quidditch-matches.json` HTTP request, query information from the database, and then send it back to the front-end in an HTTP reseponse.
 
 ## Installing
 
-To use Express, you'll add the package to a **project** with [npm](https://docs.npmjs.com/about-npm):
+To use Express, you'll add the package on a ***project by project basis*** with `npm`:
 
 ```
-npm install express --save
+npm i express
 ```
 
-## Express boilerplate
+## Express Boilerplate
 
 To use Express, we `require()` the package, create a new Express application object, and finally start the application "listening" on a specific port:
 
@@ -58,35 +57,36 @@ app.listen(PORT, () => {
 Our server won't do anything just yet, this is just boilerplate to use Express.
 
 
-This way, whenever we run `npm start`, nodemon will run our Express server, and automatically restart it whenever we edit a file. Pretty darn cool!
+This way, whenever we run `npm start`, *nodemon* will run our Express server, and automatically restart it whenever we edit a file. Magic again!
 
-## Our first route
+![Wands](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F3UtEIg06e3uz6%2Fgiphy.gif&f=1&nofb=1)
 
-In Express, you define a **route** in a `server.js` file. A route is a path the user makes an HTTP request for, such as GET `/`, and a handler function that takes care of that request.
+## Our First Route
+In Express, you define a **route** in a `server.js` file.  A route is a path the user makes an HTTP request for, such as GET `/`, and a handler function that takes care of that request. Like this...
 
 ```js
 app.get('/', (req, res) => {
-  res.send("Hello there!");
+  res.send("You're a wizard, Harry!");
 });
 ```
 
-Whenever an HTTP request to `http://localhost:3000/` is made, the handler function is called. This function has access to two variables: `req` and `res` which represent the HTTP request (any information the user sent along to us) and the HTTP response.
+Whenever an HTTP request to `http://localhost:3000/` is made, the handler function is called. This function has access to two variables: `req` and `res` which represent the HTTP **request** (any information the user sent along to us) and the HTTP **response** (any information the server bounces back).
 
-You might end up doing a lot in these route handler functions. One thing they have to do is **send** an HTTP response back, which we're doing here with `res()`
+You might end up doing a lot in these route handler functions. One thing they have to do is **send** an HTTP response back, which we're doing here with `res()`.
 
-When a user visits `http://localhost:3000/` in the browser, they'll see "Hello there!" displayed on the page. Note that if they go to `http://localhost:3000/news`, we see an error message "Cannot GET /news" because that's a different path that we haven't defined a route for.
+When a user visits `http://localhost:3000/` in the browser, they'll see "You're a wizard, Harry!" displayed on the page. Note that if they go to `http://localhost:3000/news`, we see an error message "Cannot GET /news" because that's a different path that we haven't defined a route for.
 
-## Running an Express server with [`nodemon`](https://nodemon.io)
+## Running an Express Server With `nodemon`
 
-A web server is a long-running process, which you could just run with `node server.js`. However, since you'll be editing the server files and continuously testing it, you would hae to stop the `node server.js` process and restart it after every change. 
+A web server is a long-running process, which you could just run with `node server.js`. However, since you'll be editing the server files and continuously testing it, you would have to stop the `node server.js` process and restart it after every change.
 
-Let's use a cool package `nodemon` instead. Add it to your project:
+Let's use a cool package called `nodemon` instead. Add it to your project:
 
 ```
-npm install nodemon
+npm i nodemon
 ```
 
-Then modify the `scripts` section in the `package.json` file to add a `start` script:
+Then modify the `scripts` section in the `package.json` file to add a `start` script. This is what allows us to run `npm start`:
 
 ```
 "scripts": {
@@ -94,19 +94,20 @@ Then modify the `scripts` section in the `package.json` file to add a `start` sc
 }
 ```
 
+Say it with me: Magic!
 
-## Exercise
+![Hermoine](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FOUwzqE4ZOk5Bm%2F200.gif&f=1&nofb=1)
 
-In the Express server in `server.js` define the following routes:
+## You Do
+In our Express server in `server.js`, let's define the following routes:
 
- - GET / Response content: "Welcome to my webpage"
- - GET /favorite-food Response content: Your favorite food
- - GET /favorite-movie Response content: Your favorite movie
- - GET /about-me Response content: A little autobiography
- - GET /contact Response content: Your preferred contact info
+ - GET /                  Response content: "Welcome to my webpage"
+ - GET /favorite-food     Response content: Your favorite food
+ - GET /favorite-movie    Response content: Your favorite movie
+ - GET /about-me          Response content: A little autobiography
+ - GET /contact           Response content: Your preferred contact info
 
-## Route parameters
-
+## Route Parameters
 If you consider two URLs:
 
  - goodvibes.com/article/how-to-improve-your-drumming
@@ -124,3 +125,12 @@ app.get('/article/:slug', (req, res) => {
 ```
 
 In the path definition, add a colon before a meaningful name for the parameter. You'll have access to the dynamic value inside of the `req.params` object.
+
+## Lesson Recap
+We were introduced to Express, learned about HTTP requests, and how to set up basic Express server boilerplate.  We also got some practice in with setting up routes.  All in all, not too bad of a lesson!
+
+![Friends](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fd8%2Fd7%2F65%2Fd8d765d9fc0c9bf019f8a76a4a510fc4.gif&f=1&nofb=1)
+
+## Resources
+ - [Express](http://expressjs.com)
+ - [Wizarding World](https://www.wizardingworld.com/)
