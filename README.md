@@ -115,7 +115,7 @@ If you consider two URLs:
  - goodvibes.com/article/how-to-improve-your-drumming
  - goodvibes.com/article/the-best-vibraphones
 
-You could safely assume that both of these URLs are articles, just with different [URL slugs](https://en.wikipedia.org/wiki/Clean_URL#Slug): `how-to-improve-your-drumming` and `the-best-vibraphones`.
+You could safely assume that both of these URLs are articles, just with different [URL slugs](https://en.wikipedia.org/wiki/Clean_URL#Slug): `how-to-improve-your-drumming` and `the-best-vibraphones`. By convention, if a part of the url contains two words, we join them with `-`. This is known as "sluggifying".
 
 When writing an Express route, you can access the dynamic parts of the path by declaring them as **route parameters**:
 
