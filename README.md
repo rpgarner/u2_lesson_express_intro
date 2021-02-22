@@ -80,19 +80,22 @@ When a user visits `http://localhost:3000/` in the browser, they'll see "You're 
 
 ## Running an Express Server With `nodemon`
 
-A web server is a long-running process, which you could just run with `node server.js`. However, since you'll be editing the server files and continuously testing it, you would have to stop the `node server.js` process and restart it after every change.
+A web server is a long-running process, which you could just run with `node server.js`. This would spin up your server *once*. However, since you'll be editing the server files and continuously testing it, you would have to stop the `node server.js` process and restart it after every change. Ain't nobody got time for that!
 
-Let's use a cool package called `nodemon` instead. Add it to your project:
+![ColdPops](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FbWM2eWYfN3r20%2Fgiphy.gif&f=1&nofb=1)
+
+Let's use a cool package called `nodemon` instead. We add this on a ***project by project basis***:
 
 ```
-npm i nodemon
+npm i nodemon --dev
 ```
 
-Then modify the `scripts` section in the `package.json` file to add a `start` script. This is what allows us to run `npm start`:
+Then modify the `scripts` section in the `package.json` file to add a `start` and `dev` script. This allows us to run `npm start` to run a one time spin up of our server *or* `npm run dev` to run our server with `nodemon`:
 
 ```
 "scripts": {
-  "start": "nodemon server.js"
+  "start": "node server.js",
+  "dev": "nodemon server.js"  
 }
 ```
 
