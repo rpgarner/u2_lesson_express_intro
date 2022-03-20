@@ -29,7 +29,7 @@ This **HTTP request** and **response** cycle is at the heart of the web. You mig
 
 Express is a JavaScript library to set up your own web server, which listens for different kinds of HTTP requests, and serves the right response.
 
-We'll use Express solely as a **JSON API server**. Our database might contain information about quidditch matches. Our React-powered front-end application will make `fetch()` calls to our server to, say, get all the matches at `/api/quidditch-matches.json`. 
+We'll use Express solely as a **JSON API server**. Our database might contain information about quidditch matches. Our React-powered front-end application will make `axios` calls to our server to, say, get all the matches at `/api/quidditch-matches.json`. 
 
 In working on the web server, it is your job to write code to listen for a `/api/quidditch-matches.json` HTTP request, query information from the database, and then send it back to the front-end in an HTTP reseponse.
 
