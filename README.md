@@ -59,8 +59,6 @@ app.listen(PORT, () => {
 Our server won't do anything just yet, this is just boilerplate to use Express.
 
 
-This way, whenever we run `npm start`, *nodemon* will run our Express server, and automatically restart it whenever we edit a file. Magic again!
-
 ![Wands](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F3UtEIg06e3uz6%2Fgiphy.gif&f=1&nofb=1)
 
 ## Our First Route
@@ -87,7 +85,7 @@ A web server is a long-running process, which you could just run with `node serv
 Let's use a cool package called `nodemon` instead. We add this on a ***project by project basis***:
 
 ```
-npm i nodemon --dev
+npm i nodemon --save-dev
 ```
 
 Then modify the `scripts` section in the `package.json` file to add a `start` and `dev` script. This allows us to run `npm start` to run a one time spin up of our server *or* `npm run dev` to run our server with `nodemon`:
@@ -105,13 +103,13 @@ Say it with me: Magic!
 
 ## You Do
 In our Express server in `server.js`, let's define the following routes:
-
+```
  - GET /                  Response content: "Welcome to my webpage"
  - GET /favorite-food     Response content: Your favorite food
  - GET /favorite-movie    Response content: Your favorite movie
  - GET /about-me          Response content: A little autobiography
  - GET /contact           Response content: Your preferred contact info
-
+```
 ## Route Parameters
 If you consider two URLs:
 
